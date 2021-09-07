@@ -43,9 +43,9 @@ The cloud is basically an enormous ecosystem of servers that operate together an
 
 #### Pros
 
-* Build and scale systems easily without having to manually buy hardware / servers. (Platform as a Service)
-* Deploy servers in seconds by leveraging powerful cloud systems (Infrastructure as a Service)
-* Deploy software through cloud providers that costumers can access through a subscription based agreement. (Software as a Service)
+* Build and scale systems easily without having to manually buy hardware / servers. (Platform as a Service)<a href="#note1" id="note1ref"><sup>1</sup></a>
+* Deploy servers in seconds by leveraging powerful cloud systems (Infrastructure as a Service)<a href="#note2" id="note2ref"><sup>2</sup></a>
+* Deploy software through cloud providers that costumers can access through a subscription based agreement. (Software as a Service)<a href="#note3" id="note3ref"><sup>3</sup></a>
 
 #### Cons
 
@@ -72,3 +72,9 @@ These prices are based solely on hardware and does not take into account bandwit
 When comparing just the specs, IBM is the clear winner here when it comes to price to performance.
 
 
+##### Sources and References
+###### <a id="note1" href="#note1ref"><sup>1</sup></a>[What is PaaS](https://www.ibm.com/cloud/learn/paas)
+###### <a id="note2" href="#note2ref"><sup>2</sup></a>[What is IaaS](https://www.ibm.com/cloud/learn/iaas)
+###### <a id="note3" href="#note3ref"><sup>3</sup></a>[What is SaaS](https://azure.microsoft.com/sv-se/overview/what-is-saas/)
+###### [Is the cloud really just someone else's computer?](https://www.techrepublic.com/article/is-the-cloud-really-just-someone-elses-computer/)
+###### [Cloud Computing](https://www.explainthatstuff.com/cloud-computing-introduction.html)
