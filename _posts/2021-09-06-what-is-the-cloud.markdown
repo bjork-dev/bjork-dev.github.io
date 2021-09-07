@@ -56,19 +56,19 @@ The cloud is basically an enormous ecosystem of servers that operate together an
 
 
 
-## Price Conclusion - TODO
+## Price Conclusion
 
 Different providers have different pricing on different resources. Because of this, a good practice is to compare several actors to find the optimal provider in price to performance.
 
-#####  Comparisons made with 2 vCPUs, 8GB RAM & 10GB SSD
+####  Comparisons made with Virtual Machine template running Ubuntu
 
-Web Application (Linux)
+* Azure Virtual Machine 2vCPUs, 7GB RAM, 100GB SSD (931 KR / mån)
 
-###### Azure - 2423 kr / month (App Service) 4 Cores, 7GB RAM, 50GB Storage
+* Google Cloud - Compute Engine - 2vCPUs, 8GB RAM, 375GB SSD (Lowest) (748 KR / mån)
 
-###### Google - 1256 kr / month (App Engine) 2 vCPUs, 8GB RAM, 10GB Storage
+* IBM Cloud - Virtual Server - 2 vCPUs, 8GB RAM, 100GB SSD (Lowest) (659Kr / mån)
 
-###### AWS- 2423 kr / month (Fargate) 
-
+These prices are based solely on hardware and does not take into account bandwith speed and limits for example.
+When comparing just the specs IBM is the clear winner here when it comes to price to performance.
 
 
