@@ -54,7 +54,7 @@ The cloud is basically an enormous ecosystem of servers that operate together an
 * Contracts and agreements must be followed as set by the cloud provider, if the customer does not agree with these, they will have to find another provider.
 * Storaging sensitive information in the cloud could be a security risk due to malicious actors continuously targeting cloud providers due to their huge customer base.
 
-
+​     
 
 ## Price Conclusion
 
