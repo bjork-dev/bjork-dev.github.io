@@ -69,6 +69,6 @@ Different providers have different pricing on different resources. Because of th
 * IBM Cloud - Virtual Server - 2 vCPUs, 8GB RAM, 100GB SSD (Lowest) (659Kr / mån)
 
 These prices are based solely on hardware and does not take into account bandwith speed and limits for example.
-When comparing just the specs IBM is the clear winner here when it comes to price to performance.
+When comparing just the specs, IBM is the clear winner here when it comes to price to performance.
 
 
