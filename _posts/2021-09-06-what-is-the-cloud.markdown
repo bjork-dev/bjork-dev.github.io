@@ -62,7 +62,7 @@ Different providers have different pricing on different resources. Because of th
 
 ####  Comparisons made with Virtual Machine template running Ubuntu
 
-* Azure Virtual Machine 2vCPUs, 7GB RAM, 100GB SSD (931 KR / mån)
+* Azure - Virtual Machine - 2vCPUs, 7GB RAM, 100GB SSD (931 KR / mån)
 
 * Google Cloud - Compute Engine - 2vCPUs, 8GB RAM, 375GB SSD (Lowest) (748 KR / mån)
 
