@@ -13,7 +13,7 @@
  {% endfor %}
 </ul>
 
-![](elom.jpg)
+![](img/elom.jpg)
 
 
 
