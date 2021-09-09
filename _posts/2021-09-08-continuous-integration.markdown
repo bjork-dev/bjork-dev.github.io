@@ -13,11 +13,11 @@ A CI Pipeline is a streamlined and effective way of developing software in an ag
 
 To understand why Continuous Integration is useful, it can be beneficial to understand what it replaces. Imagine being in a team of 30 developers, a lot of code is written, and sometimes there are multiple people working on the same file. Now this would not be a problem if all 30 people were constantly communicating with each other and presenting their changes to someone else's code. But not only does this require a huge portion of time, expecting everyone to always be available is unrealistic, and it does not hold up in an agile workflow. 
 
-To overcome this and achieve agile workflow the team could instead develop against the same branch and constantly pulling/pushing changes made so that everyone is always up to date. That does increase the development speed for sure but introduces another problem; breaking changes. If the team constantly checks in code, there's no doubt going to be compile issues, bugs, etc...  
+To overcome this and achieve agile workflow the team could instead develop against the same branch and constantly be pulling/pushing changes made so that everyone is always up to date. That does increase the development speed for sure but introduces another problem; breaking changes. If the team constantly checks in code, there's no doubt going to be compile issues, bugs, etc...
 
-To solve this we implement some automation which is the core of the CI pipeline. A simple pipeline could consist of:
+To solve this we can implement some automation which is the core of the CI pipeline and acts like a safety net for the CI workflow. A simple pipeline could consist of automating the following:
 
-**the change -> building the application -> running tests**
+**the change is added to the pipeline -> building the application -> running tests**
 
 If the pipeline is successful the changes did not break anything, but if it fails the developer will quickly know why and can fix it immediately while also maintaining developer flow. 
 
