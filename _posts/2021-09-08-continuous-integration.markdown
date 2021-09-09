@@ -79,8 +79,13 @@ After that the steps are run parallelly in 2 environments, which we can see in t
 ##### Sources
 
 [Managing complex workflows](https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows)
+
 [Developer Flow State and Its Impact On Productivity](https://stackoverflow.blog/2018/09/10/developer-flow-state-and-its-impact-on-productivity/)
-[Continuous Intergration](https://semaphoreci.com/community/tutorials/continuous-integration)
+
+[Continuous Integration](https://semaphoreci.com/community/tutorials/continuous-integration)
+
 [The Eight Phases of A DevOps Pipeline](https://medium.com/taptuit/the-eight-phases-of-a-devops-pipeline-fda53ec9bba)
+
 [CI/CD Pipeline](https://semaphoreci.com/blog/cicd-pipeline)
-[GitHub Actions Syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions)
+
+##### [GitHub Actions Syntax](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions)
