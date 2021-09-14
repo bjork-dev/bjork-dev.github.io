@@ -5,7 +5,7 @@ tags: CI/CD pipleine github actions
 
 ## The Application
 
-To make the simple "Hello World" ASP.NET Core app run in a container I have simply created a Dockerfile that describes the steps to take to build the app.
+To make the "Hello World" ASP.NET Core app run in a container I have simply created a Dockerfile that describes the steps to take to build the app.
 
 #### Dockerfile
 
