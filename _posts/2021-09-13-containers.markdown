@@ -41,18 +41,20 @@ services:
   web:
     build: . # build the dockerfile in the current directory (root)
     ports:
-      - "5000:5000"
+      - "5000:5000" # Map port 5000 to 5000
 ```
 
 #### Description of the dockerfile
 
-First we specify the correct framework for the container to download (3.1 since the app is based on that)
+First we specify the correct framework for the container to download (3.1, since the app is based on that)
 
-We also set the directory for the files and expose port 5000. Beneath we set the internal ASP NET enviroment to also use port 5000. (This is also the default, but the env command can be used to set other ports if needed.)
+We also set the directory for the files and expose port 5000. Beneath, we set the internal ASP NET environment to use port 5000. (This is also the default, but the `env` command can be used to set other ports if needed.)
 
 After that we build the app as release using dotnet SDK to the src folder. We also publish the app before running it, this is not necessary since we are building the application in the same environment but if it was built outside the container, we would need to publish it to be able to run it.  
 
-#### GithHub Workflow file, describes a full **Continuous Integration / Continuous Delivery pipeline**.
+Finally we run `dotnet run` with the published `dll` as initiator.
+
+#### GithHub Workflow file - Describes a full **Continuous Integration / Continuous Delivery pipeline**.
 
 ```yaml
 name: DotNet CI/CD
@@ -107,7 +109,7 @@ username: ${ { github.actor } } # Gets our username from the environment it is r
 password: ${ { secrets.GITHUB_TOKEN } } # Automatically gets our token from GH.
 ```
 
-Here we automatically get our github username and token secret for authentication against the container registry using GitHub Context. By using special variables we do not have to expose sensitive information in our YAML file. Instead it is resolved at runtime.
+Here we automatically get our github username and token secret for authentication against the container registry using **GitHub Context**. By using special variables we do not have to expose sensitive information in our YAML file. Instead it is resolved at runtime.
 
 ```yaml
 tags: ghcr.io/bjork-dev/helloworld:latest # hardcoded, could be replaced with metadata in a more advanced project with more branches
@@ -147,15 +149,19 @@ The pattern above describes the following with examples
 | `push tag`     | `refs/tags/v1.2.3`         | `1.2.3`, `1.2`, `latest` |
 | `push tag`     | `refs/tags/v2.0.8-beta.67` | `2.0.8-beta.67`          |
 
+The tag patterns also include semver ([Semantic Versioning](https://semver.org/)) which is a popular versioning convention for software deployment based on MAJOR.MINOR.PATCH (x.x.x)
 
+##### Sources
 
-Sources
+##### [github-context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context)
 
-[github-context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context)
+##### [github token](https://docs.github.com/en/actions/reference/authentication-in-a-workflow)
 
-[github token](https://docs.github.com/en/actions/reference/authentication-in-a-workflow)
+##### [docker metadata](https://github.com/docker/metadata-action)
 
-[docker metadata](https://github.com/docker/metadata-action)
+##### [publishing-and-installing-a-package-with-github-actions](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions)
 
-[publishing-and-installing-a-package-with-github-actions](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions)
+##### [docker for beginners](https://docker-curriculum.com/)
+
+##### [container-orchestration-explained](https://newrelic.com/blog/best-practices/container-orchestration-explained)
 
