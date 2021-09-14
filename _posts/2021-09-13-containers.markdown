@@ -44,6 +44,10 @@ services:
       - "5000:5000" # Map port 5000 to 5000
 ```
 
+To run the application inside a container we can either call `docker run -p 5000:5000 <container-name>` or `docker-compose up`.
+
+
+
 #### Description of the dockerfile
 
 First we specify the correct framework for the container to download (3.1, since the app is based on that)
