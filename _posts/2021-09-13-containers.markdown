@@ -118,8 +118,8 @@ As described by the comment, we have hardcoded the name and version of the conta
 **Example**
 
 ```yaml
-tags: ${ { steps.meta.outputs.tags } }
-labels: ${ { steps.meta.outputs.labels } }
+tags: ${ { steps.meta.outputs.tags } } # By default this will be set to the branch name.
+labels: ${ { steps.meta.outputs.labels } } # By default this will be set to the repo name.
 ```
 
 Tag events can be defined in the meta action and could be set by branch names or other patterns for example
@@ -151,8 +151,11 @@ The pattern above describes the following with examples
 
 Sources
 
-(github-context)[https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context]
+[github-context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context)
 
-(github token)[https://docs.github.com/en/actions/reference/authentication-in-a-workflow]
+[github token](https://docs.github.com/en/actions/reference/authentication-in-a-workflow)
 
-(docker metadata)[https://github.com/docker/metadata-action]
+[docker metadata](https://github.com/docker/metadata-action)
+
+[publishing-and-installing-a-package-with-github-actions](https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions)
+
