@@ -68,3 +68,52 @@ We can see logs from the Azure portal in the same way as we could in our local t
 
 ### Silver Level
 
+We can automate this process to create the same setup directly from the Azure CLI using a bash script. 
+
+<img src="/img/azurecli1.png">
+
+The following script clones our existing calculator app from GitHub and creates all Azure Resources that we previously did manually.
+
+```bash
+#!/bin/bash
+
+# Function app and storage account names must be unique.
+storageName=asduwqdgy2237$RANDOM
+functionAppName=bjork-dev-github$RANDOM
+region=northeurope
+
+# TODO:
+gitrepo=https://github.com/bjork-dev/AzureFunctions.git
+token=removedFromThisPublicScript
+
+# Enable authenticated git deployment in your subscription from a private repo.
+az functionapp deployment source update-token \
+  --git-token $token
+
+# Create a resource group.
+az group create \
+  --name myResourceGroup \
+  --location $region
+
+# Create an Azure storage account in the resource group.
+az storage account create \
+  --name $storageName \
+  --location $region \
+  --resource-group myResourceGroup \
+  --sku Standard_LRS
+
+# Create a function app with source files deployed from the specified GitHub repo.
+az functionapp create \
+  --name $functionAppName \
+  --storage-account $storageName \
+  --consumption-plan-location $region \
+  --resource-group myResourceGroup \
+  --deployment-source-url $gitrepo \
+  --deployment-source-branch master \
+  --functions-version 2
+
+```
+
+We can see the output from the CLI while the script is running
+
+<img src="/img/azurecli2.png">
