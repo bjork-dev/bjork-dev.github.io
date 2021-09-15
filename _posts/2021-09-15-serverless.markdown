@@ -5,9 +5,9 @@ tags: azure serverless containers
 
 ## What is Serverless and Function as a Service (Faas)?
 
+TODO
 
-
-### Calculator Program
+## Calculator Program
 
 The following is a very simple calculator that only knows how to calculate the sum of two numbers that are supplied by using a HTTP GET query.
 
@@ -34,33 +34,35 @@ public static class HttpCalcTrigger
     }
 ```
 
-#### Bronze Level
+### Bronze Level
 
 The program has been created using the Azure Function template from the Visual Studio Code Azure Extension. The function is configured to be triggered on any HTTP request that has a valid API key supplied as seen above in the method signature `HttpTrigger(AuthorizationLevel.Function)`
 
-![image-20210915160152621](C:\Users\nissi\AppData\Roaming\Typora\typora-user-images\image-20210915160152621.png)
+<img src="/img/image-20210915160152621.png">
 
 Using VS we also have access to debug the function locally, so we can set breakpoints just like in a normal application, using this we can access the application in our browser on a local IP, under is an example of how we run the program locally.
 
-![image-20210915160528733](C:\Users\nissi\AppData\Roaming\Typora\typora-user-images\image-20210915160528733.png)
+<img src="/img/image-20210915160528733.png">
 
-​																							Our app running locally with `numbers=50+50` as query
+Our app running locally with `numbers=50+50` as query
+
+
 
 We also can see any log output in our integrated terminal in VS Code
 
-![image-20210915160750241](C:\Users\nissi\AppData\Roaming\Typora\typora-user-images\image-20210915160750241.png)
+<img src="/img/image-20210915160750241.png">
 
 
 
 From the extension we can directly deploy our function to Azure, after is has finished we can access it using the azure URI. Under is the same application but running in the cloud instead. 
 
-![image-20210915161428771](C:\Users\nissi\AppData\Roaming\Typora\typora-user-images\image-20210915161428771.png)
+<img src="/img/image-20210915161428771.png">
 
 To run this in the cloud we also have to supply our API key, as specified in the `code` part of the query
 
 We can see logs from the Azure portal in the same way as we could in our local terminal.
 
-![image-20210915161543882](C:\Users\nissi\AppData\Roaming\Typora\typora-user-images\image-20210915161543882.png)
+<img src="/img/image-20210915161543882.png">
 
 
 
