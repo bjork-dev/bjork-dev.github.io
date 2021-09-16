@@ -1,11 +1,19 @@
 ---
 author: Liam Björkman
-tags: azure serverless containers
+tags: azure serverless containers FaaS
 ---
 
 ## What is Serverless and Function as a Service (Faas)?
 
-TODO
+### Serverless
+
+Serverless means that the cloud provider takes care of the complete infrastructure so that the developer can focus solely on the code. Meaning that there's no configuration, you just deploy your code to the provider and it's up and running. 
+
+The name may be misleading, there are still servers in the background, the difference is that the infrastructure layer has been abstracted from the customer.
+
+### Function as a Service
+
+FaaS is a type of cloud-computing service that allows execution of code in response to events such as a HTTP trigger.  It is actually a subset of Serverless, but it is the most central technology in Serverless architecture, therefore they easily get mixed up. One key aspect of FaaS is the automatic management of resource allocation (scaling up/down) and the billing strategy. FaaS computing architecture never holds compute resources in memory, instead computing takes place only when requested to (for example when a trigger is hit). This results in a efficient price to performance ratio, since you only pay for the compute time.
 
 ## Calculator Program
 
@@ -159,7 +167,7 @@ Since we have set authentication on our trigger to avoid usage by unauthorzied u
 
 <img src="/img/image-20210916105505656.png">
 
-### Gold Level
+### Gold Level - TODO
 
 To be able to automate this process through a pipeline we have to setup a repository secret to be able to authenticate to Azure automatically.
 
@@ -174,4 +182,14 @@ We will then create the secret in our repo using the XML data
 
 
 
+
+##### Sources
+
+##### [Know About Serverless](https://geekflare.com/know-about-serverless/)
+
+[FaaS - IBM](https://www.ibm.com/cloud/learn/faas)
+
+[Build Serverless APIs with Azure Functions](https://channel9.msdn.com/Shows/Azure-Friday/Build-serverless-APIs-with-Azure-Functions)
+
+[Go serverless: Event-driven applications with Azure Functions](https://www.youtube.com/watch?v=UFxQhszT450)
 
