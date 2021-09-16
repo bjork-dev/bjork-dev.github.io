@@ -11,28 +11,61 @@ TODO
 
 The following is a very simple calculator that only knows how to calculate the sum of two numbers that are supplied by using a HTTP GET query.
 
+
+
+Run.csx - The core application that will be run as a function
+
 ```c#
-public static class HttpCalcTrigger
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
+
+public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+{
+    string[] numbers = req.Query["numbers"].ToString().Split(' '); // The '+' sign dissapears in the request, therefore we split on whitespace instead. Not ideal in a real app.
+    try
     {
-        [FunctionName("HttpCalcTrigger")]
-        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", Route = null)] HttpRequest req, ILogger log)
-        {
-            string[] numbers = req.Query["numbers"].ToString().Split(' ');
-            try
-            {
-                int n1 = int.Parse(numbers[0]);
-                int n2 = int.Parse(numbers[1]);
-                int result = n1 + n2;
-                log.LogInformation($"C# HTTP trigger function processed {n1} + {n2} and returned {result} .");
-                return new OkObjectResult(result);
-            }
-            catch
-            {
-                return new BadRequestObjectResult("Numbers were incorrectly supplied.");
-            }
-        }
+        int n1 = int.Parse(numbers[0]);
+        int n2 = int.Parse(numbers[1]);
+        int result = n1 + n2;
+        log.LogInformation($"C# HTTP trigger function processed {n1} + {n2} and returned {result} .");
+        return new OkObjectResult(result);
     }
+    catch
+    {
+        return new BadRequestObjectResult("Numbers were incorrectly supplied.");
+    }
+}
+
 ```
+
+function.json - Describes the input and output flow, as well as what HTTP methods to accept.
+
+```json
+{ 
+    "bindings": [
+        {
+          "authLevel": "function",
+          "name": "req",
+          "type": "httpTrigger",
+          "direction": "in",
+          "methods": [
+            "get"
+          ]
+        },
+        {
+          "name": "$return",
+          "type": "http",
+          "direction": "out"
+        }
+      ]
+}
+```
+
+
 
 ### Bronze Level
 
@@ -78,7 +111,7 @@ The following script clones our existing calculator app from GitHub and creates 
 #!/bin/bash
 
 # Function app and storage account names must be unique.
-storageName=asduwqdgy2237$RANDOM
+storageName=bjork-dev-storage$RANDOM
 functionAppName=bjork-dev-github$RANDOM
 region=northeurope
 
@@ -109,7 +142,7 @@ az functionapp create \
   --consumption-plan-location $region \
   --resource-group myResourceGroup \
   --deployment-source-url $gitrepo \
-  --deployment-source-branch master \
+  --deployment-source-branch main \
   --functions-version 2
 
 ```
@@ -117,3 +150,14 @@ az functionapp create \
 We can see the output from the CLI while the script is running
 
 <img src="/img/azurecli2.png">
+
+After the script has finished running we can verify that the Function App & HttpTrigger has been created by checking the Portal.
+
+<img src="/img/azureportal1.png">
+
+Since we have set authentication on our trigger to avoid usage by unauthorzied users we have to supply our API key when running the trigger in the browser.
+
+<img src="/img/image-20210916105505656.png">
+
+### Gold Level
+
