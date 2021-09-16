@@ -161,3 +161,17 @@ Since we have set authentication on our trigger to avoid usage by unauthorzied u
 
 ### Gold Level
 
+To be able to automate this process through a pipeline we have to setup a repository secret to be able to authenticate to Azure automatically.
+
+To do this we first have to have an existing function app, the deployment is only for functions. We then can get the publish profile from the app menu.
+
+<img src="/img/calc1.png">
+
+We will then create the secret in our repo using the XML data
+
+<img src="/img/gh2.png">
+
+
+
+
+
