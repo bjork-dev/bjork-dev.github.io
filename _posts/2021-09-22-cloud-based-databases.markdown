@@ -323,6 +323,10 @@ For the functions we might want around 7,000,000 executions per month to cover o
 
 ##### Sources
 
-##### https://azure.microsoft.com/en-us/pricing/calculator/
+##### [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/)
 
-##### https://azure.microsoft.com/en-us/pricing/details/cosmos-db/
+##### [CosmosDB Pricing](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)
+
+##### [Azure Functions REST API](https://cloudskills.io/blog/azure-functions-rest-api)
+
+##### [Work with NoSQL data in Azure Cosmos DB](https://docs.microsoft.com/en-us/learn/paths/work-with-nosql-data-in-azure-cosmos-db/)
