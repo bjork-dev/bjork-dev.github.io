@@ -307,7 +307,7 @@ This would probably be covered by 400 R/Us per hour which would land at around *
 
 Azure functions are free to for the first 1,000,000 executions.  But if we base it at 2,000,000 executions, 128MB memory size & each exection takes 1000ms that leaves us at **1.75 kr** per month.
 
-**Total 202kr.**
+**Total: 202kr**
 
 #### A lot of users scenario
 
@@ -317,7 +317,7 @@ Let's assume that we have 5000 users every hour making requests. Some of these r
 
 For the functions we might want around 7,000,000 executions per month to cover our expected user requests + some overhead. We would probably want to up the memory size to 1024MB as well. This would cost us **933 kr** per month based on 1000ms execution time.
 
-**Total: 10,426 kr**
+**Total: 8,583 kr**
 
 
 
