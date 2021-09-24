@@ -323,3 +323,11 @@ After that any successful deployments to our container registry will automatical
 
 ##### [What's a webhook](https://sendgrid.com/blog/whats-webhook/)
 
+##### [Explore Azure App Service](https://docs.microsoft.com/en-us/learn/modules/introduction-to-azure-app-service/)
+
+##### [Host a web application with Azure App Service](https://docs.microsoft.com/en-us/learn/modules/host-a-web-app-with-azure-app-service/)
+
+##### [Build and store container images with Azure Container Registry](https://docs.microsoft.com/en-us/learn/modules/build-and-store-container-images/)
+
+##### [Deploy and run a containerized web app with Azure App Service](https://docs.microsoft.com/en-us/learn/modules/deploy-run-container-app-service/)
+
