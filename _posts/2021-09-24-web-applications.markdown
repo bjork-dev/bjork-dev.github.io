@@ -218,3 +218,108 @@ The deployment part will be divided in different levels (Bronze, Silver and Gold
 
 ### Bronze
 
+We can easily deploy an Azure Web App from Visual Studio thanks to the built in extensions. In VS2019 it is as easy as going to the publish tab and following the wizard.
+
+<img src="/img/azureimg1.png">
+
+### Silver
+
+In the repo I have added a Dockerfile that looks like this.
+
+```dockerfile
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY ["AzureWebApp.csproj", "."]
+RUN dotnet restore "./AzureWebApp.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "AzureWebApp.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "AzureWebApp.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "AzureWebApp.dll"]
+```
+
+The Dockerfile can then be used for pushing the application as a container package to Github Container Registry using a Github Actions workflow that is triggered on pushes to the repository.
+
+The workflow file
+
+```yaml
+name: Build App & Push to container registry
+
+on: [push]
+  
+jobs:
+    build-and-push-package:
+        runs-on: ubuntu-latest
+        env: 
+          working-directory: .
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@master
+          
+        - name: Setup .NET ${ { env.DOTNET_VERSION } } Environment
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: ${ { env.DOTNET_VERSION } }
+            
+        - name: Build Project
+          run: dotnet build
+            
+        - name: Login to GitHub Container Registry
+          uses: docker/login-action@v1.10.0
+          with:
+             registry: ghcr.io
+             username: ${ { github.actor } };
+             password: ${ { secrets.GITHUB_TOKEN } }
+             
+        - name: Build and push container package
+          id: docker_build
+          uses: docker/build-push-action@v2.7.0
+          with:
+            push: true
+            context: ${ {env.working-directory} }
+            tags: |
+              ghcr.io/bjork-dev/todoapp:latest
+              ghcr.io/bjork-dev/todoapp:${ { github.run_number } }
+```
+
+If the workflow is run successfully, the package registry will be updated with the new version. It can be pulled with the tag "latest" or run number.
+
+<img src="/img/package1.png">
+
+### Gold
+
+To implement our app into a Azure Web App with full CI/CD integration, we can setup a webhook for our repo to update the container against.
+
+First we need to create an App Service resource in Azure and enable continuous integration, when that's enabled we will get a unique webhook URL for our app that we can use to send updated information to. We also need to supply our container registry URL in the deployment center tab, since our repo is public, there's no need for any authentication.
+
+<img src="/img/azureportal4.png">
+
+Next we will add our webhook URL to our repo, under Settings -> Webhooks.
+
+<img src="/img/webhook1.png">
+
+We can also select specific events for the webhook to be triggered on, just like our Azure Functions. Since I only care about sending out new container packages, I have set it to trigger on successful package deployments.
+
+<img src="/img/webhook2.png">
+
+After that any successful deployments to our container registry will automatically update our running Azure Web App without any manual intervention needed! We can see new deployments being executed in the logs tab of our App Service. They pretty much start as soon as the latest container package has been published in Github.
+
+<img src="/img/azureportal5.png">
+
+
+
+##### Sources
+
+##### [What's a webhook](https://sendgrid.com/blog/whats-webhook/)
+
