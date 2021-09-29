@@ -63,7 +63,7 @@ Example of how a consumer can connect to a VPC through a VPN and then use that t
 
 By implementing these strategies we do not expose any of our resources to the Internet just like if we were hosting everything ourselves on-premise. By implementing a cloud solution, we can significantly reduce costs while improving general performance and opening a door for seamless expansion and new implementations. 
 
-One such implementation could be Azure Service Bus, that can help us improve performance and availability of our application by using technologies such as Message Queueing with load balancing and atomic transactions. We can use our private network to configure our Service Bus to either work only between certain IP-addresses, private endpoints or between Virtual Networks. No traffic is sent through the Internet.
+One such implementation could be Azure Service Bus, that can help us improve performance and availability of our application by using technologies such as Message Queueing with load balancing and atomic transactions. We can use our private network to configure our Service Bus to either work only between certain privateIP-addresses, private endpoints or between Virtual Networks. No traffic is sent through the Internet.
 
 
 
@@ -76,6 +76,8 @@ One such implementation could be Azure Service Bus, that can help us improve per
 ##### [Virtual Private Cloud](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud/)
 
 ##### [Azure Private Link](https://azure.microsoft.com/sv-se/services/private-link/#how-it-works)
+
+##### [Service Bus Endpoints](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-service-endpoints)
 
 
 
