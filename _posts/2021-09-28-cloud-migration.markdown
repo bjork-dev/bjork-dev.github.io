@@ -11,18 +11,18 @@ To overcome this we will need to convince our CTO that by using a Virtual Privat
 
 ## What is Virtual Private Cloud?
 
-A VPC is a public cloud offering that lets an enterprise establish its own private cloud-like computing environment on shared [public cloud](https://www.ibm.com/cloud/public) infrastructure. A VPC gives an enterprise the ability to define and control a virtual network that is logically isolated from all other public cloud tenants, creating a private, secure place on the public cloud.
+A VPC is a public cloud service that lets  you establish your own private cloud-like computing environment on shared public cloud infrastructure. A VPC gives you the ability to define and control a virtual network that is logically isolated from all other public cloud tenants, creating a private, secure place on the public cloud.
 
-A VPC’s logical isolation is implemented using virtual network functions and security features that give an enterprise customer granular control over which IP addresses or applications can access particular resources. It is analogous to the “friends-only” or “public/private” controls on social media accounts used to restrict who can or can’t see your otherwise public posts.
+A VPC’s logical isolation is implemented using virtual network functions and security features that give a customer complete control over which IP addresses or applications can access particular resources.
 
 
 
-### Features
+### Features of VPC
 
-- **Agility:** Control the size of your virtual network and deploy cloud resources whenever your business needs them. You can scale these resources dynamically and in real-time.
-- **Availability:** Redundant resources and highly fault-tolerant availability zone architectures mean your applications and workloads are highly available.
+- **Control:** Control the size of your virtual network and deploy cloud resources whenever your business needs them. You can scale these resources just like on a public cloud.
+- **Availability:** Redundant resources and fault-tolerant availability zone architectures mean your applications and workloads are available.
 - **Security:** Because the VPC is a logically isolated network, your data and applications won’t share space or mix with those of the cloud provider’s other customers. You have full control over how resources and workloads are accessed, and by whom.
-- **Affordability:** VPC customers can take advantage of the public cloud’s cost-effectiveness, such as saving on hardware costs, labor times, and other resources.
+- **Affordability:** VPC customers can take advantage of the public cloud’s cost-effectiveness, such as saving on hardware costs, low latency, and other resources.
 
 
 
@@ -36,21 +36,46 @@ Example of how a VPC can integrate with a on-premise network to extend the compa
 
 ## What is Azure Private Link?
 
-Azure Private Link enables you to access Azure PaaS Services (for example, Azure Storage and SQL Database) and Azure hosted customer-owned/partner services over a [private endpoint](https://docs.microsoft.com/en-us/azure/private-link/private-endpoint-overview) in your virtual network.
+Azure Private Link enables you to access PaaS Services (for example, Azure Storage and SQL Database) and Azure hosted services over a private endpoint in your virtual network (Azure's version of VPC).
 
 **Private Endpoint** - A private IP from the VPC that connects privately and securely to a service such as a VM or Database through Azure Private Link.
 
-Traffic between your virtual network and the service travels the Microsoft backbone network, a secure network that is not exposed to the Internet. It operates within the Azure data centers. The same network is used for Microsoft services such as Microsoft 365 and Azure Services.  
+Traffic between your virtual network and the service travels the Microsoft backbone network (Microsoft Global Network), a secure network that is not exposed to the Internet. It operates within the Azure data centers. The same network is used for Microsoft services such as Microsoft 365 and Azure Services, offering lower latency and faster handling than traversing across the Internet. 
 
 ### Features
 
 Azure Private Link provides the following benefits:
 
-- **Privately access services on the Azure platform**: Connect your virtual network to services in Azure without a public IP address at the source or destination. Service providers can render their services in their own virtual network and consumers can access those services in their local virtual network. The Private Link platform will handle the connectivity between the consumer and services over the Azure backbone network.
-- **On-premises and peered networks**: Access services running in Azure from on-premises over ExpressRoute private peering, VPN tunnels, and peered virtual networks using private endpoints. There's no need to configure ExpressRoute Microsoft peering or traverse the internet to reach the service. Private Link provides a secure way to migrate workloads to Azure.
+- **Privately access services on the Azure platform**: Connect your VPC to services in Azure without a public IP address at the source or destination. Service providers can render their services in their own virtual network and consumers can access those services in their local virtual network. The Private Link platform will handle the connectivity between the consumer and services over the Microsoft Global Network.
+- **On-premises and peered networks**: Access services running in Azure from on-premises over VPN tunnels using private endpoints. Private Link provides a secure way to reach private endpoints without connecting over the Internet.
 - **Protection against data leakage**: A private endpoint is mapped to an instance of a PaaS resource instead of the entire service. Consumers can only connect to the specific resource. Access to any other resource in the service is blocked. This mechanism provides protection against data leakage risks.
 - **Global reach**: Connect privately to services running in other regions. The consumer's virtual network could be in region A and it can connect to services behind Private Link in region B.
-- **Extend to your own services**: Enable the same experience and functionality to render your service privately to consumers in Azure. By placing your service behind a standard Azure Load Balancer, you can enable it for Private Link. The consumer can then connect directly to your service using a private endpoint in their own virtual network. You can manage the connection requests using an approval call flow. Azure Private Link works for consumers and services belonging to different Azure Active Directory tenants.
+
+Example of how a consumer can connect to a VPC through a VPN and then use that to connect to another VPC hosting sensitive resources through Azure Private Link without traversing the Internet. 
+
+**Azure EXPRESSROUTE** - VPN that connects directly via Microsoft Global Network to Azure- or Microsoft 365-services.
 
 <img src="/img/vpc2.png">
+
+
+
+## Summary
+
+By implementing these strategies we do not expose any of our resources to the Internet just like if we were hosting everything ourselves on-premise. By implementing a cloud solution, we can significantly reduce costs while improving general performance and opening a door for seamless expansion and new implementations. 
+
+One such implementation could be Azure Service Bus, that can help us improve performance and availability of our application by using technologies such as Message Queueing with load balancing and atomic transactions. We can use our private network to configure our Service Bus to either work only between certain IP-addresses, private endpoints or between Virtual Networks. No traffic is sent through the Internet.
+
+
+
+##### Sources
+
+##### [Service Bus Messaging](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview)
+
+##### [Azure ExpressRoute](https://docs.microsoft.com/en-ca/azure/expressroute/expressroute-introduction)
+
+##### [Virtual Private Cloud](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud/)
+
+##### [Azure Private Link](https://azure.microsoft.com/sv-se/services/private-link/#how-it-works)
+
+
 
