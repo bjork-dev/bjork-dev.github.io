@@ -1,0 +1,26 @@
+## Scaling out and up
+
+There's two types of scaling strategies that can be used in cloud computing. Scaling up/down and out/in.
+
+#### Scale Out
+
+When we choose to scale out we are creating new instances of the application running. For example our Azure App Service could scale out to multiple instances (containers) running the same app to serve more requests and balance the load. This is ideal when we temporarily need more performance to handle an increased request load or if we want to start up instances in other regions to decrease response times. This can also be a very cost-efficient strategy if used in a microservices architecture where the systems are decoupled from each other, for example Azure Functions for API, Web App for presentation and cosmos DB for database. We can then scale these systems independently depending on the load, and scale in when the load decreases. We could even turn on auto-scaling based on fixed metrics to handle this automatically, this will make sure that we only pay for consumption and nothing more.
+
+
+
+#### Scale Up
+
+Scaling up essentially means that we add more (better) hardware to our app, for instance more RAM or vCPUs. This can be ideal when you have a steady, predictable load and don't expect any huge peaks. This approach *can* also be more cost-efficient since you will know exactly what you are paying for, in contrast to multiple servers spinning up and down depending on load peaks. Scaling up does require downtime, since the environment has to be moved to new hardware. Other reasons why scaling up could be ideal is if other systems can't handle multiple instances making requests (like a single instance API endpoint) or if the app is not stateless, since scaling out will start and terminate instances we cannot save any data to the instance, otherwise it will get lost at termination.
+
+
+
+## Cost Scale out vs Scale up 
+
+Below are the estimated price differences for having an app service and a VM that scales up and out.
+
+
+
+
+
+
+
