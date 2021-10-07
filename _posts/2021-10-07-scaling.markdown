@@ -14,13 +14,18 @@ Scaling up essentially means that we add more (better) hardware to our app, for 
 
 
 
-## Cost Scale out vs Scale up 
+## Cost - Scale out vs Scale up 
 
 Below are the estimated price differences for having an app service and a VM that scales up and out.
 
+#### Scale up - VM
 
 
 
 
 
 
+
+##### Sources
+
+[Scale Up vs Scale Out](https://opsani.com/blog/scale-up-vs-scale-out-whats-the-difference/)
