@@ -1,3 +1,7 @@
+---
+typora-copy-images-to: ..\img
+---
+
 ## Scaling out and up
 
 There's two types of scaling strategies that can be used in cloud computing. Scaling up/down and out/in.
@@ -16,16 +20,36 @@ Scaling up essentially means that we add more (better) hardware to our app, for 
 
 ## Cost - Scale out vs Scale up 
 
-Below are the estimated price differences for having an app service and a VM that scales up and out.
+When scaling up we can control our costs since we will upgrade one instance to a new hardware plan. Usually the cost estimation per month or hour is provided by the cloud provider while selecting plans. When instead scaling out, we pay for additional instances, but only during the time that they are needed. Once the load has normalized they are terminated and we only pay for the running instance(s). Which one that will be more cost-efficient depends on the scenario and the system type.
 
-#### Scale up - VM
+For virtual machines, scaling up is the easier approach since it will only require a hardware upgrade. Scaling out is of course an option as well but it will increase complexity with each instance and require configuring of load balancers for each new instance and make sure that running applications in the environment is configured for it as well.
 
-
-
-
+For app services scaling up is more suitable when we have stateful applications (data is saved/processed by the app), this just like VMs requires downtime for the upgrade. If the app service is stateless, scaling out will provide the most benefits, and load balancing, etc. is taken care by container orchestrating.
 
 
+
+## App Service Plans
+
+Depending on what App Service Plan we run, there's different possibilities for scaling. 
+
+##### Dev / Test
+
+F1 does not grant any scaling, but B1 does give us access to 3 instances of manual scale.
+
+<img src="/img/appservice1.png">
+
+##### Production and greater
+
+For the production and isolated plans we have access to far more instances, starting at 20 for the lowest tier (or 10 for S Tier) and also auto-scaling, which can be configured to scale on demand.
+
+<img src="/img/image-20211008102016671.png">
 
 ##### Sources
 
 [Scale Up vs Scale Out](https://opsani.com/blog/scale-up-vs-scale-out-whats-the-difference/)
+
+[Scale apps in Azure App Service](https://docs.microsoft.com/en-us/learn/modules/scale-apps-app-service/)
+
+[Scale an App Service web app to efficiently meet demand with App Service scale up and scale out](https://docs.microsoft.com/en-us/learn/modules/app-service-scale-up-scale-out/)
+
+[Scale up vs Scale out](https://www.stevemar.net/scale-up-scale-out/)
