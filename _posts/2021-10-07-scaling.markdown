@@ -1,5 +1,7 @@
 ---
 typora-copy-images-to: ..\img
+author: Liam Björkman
+tags: cloud container azure scaling infrastructure
 ---
 
 ## Scaling out and up
