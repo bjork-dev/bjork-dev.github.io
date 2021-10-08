@@ -48,10 +48,10 @@ For the production and isolated plans we have access to far more instances, star
 
 ##### Sources
 
-[Scale Up vs Scale Out](https://opsani.com/blog/scale-up-vs-scale-out-whats-the-difference/)
+##### [Scale Up vs Scale Out](https://opsani.com/blog/scale-up-vs-scale-out-whats-the-difference/)
 
-[Scale apps in Azure App Service](https://docs.microsoft.com/en-us/learn/modules/scale-apps-app-service/)
+##### [Scale apps in Azure App Service](https://docs.microsoft.com/en-us/learn/modules/scale-apps-app-service/)
 
-[Scale an App Service web app to efficiently meet demand with App Service scale up and scale out](https://docs.microsoft.com/en-us/learn/modules/app-service-scale-up-scale-out/)
+##### [Scale an App Service web app to efficiently meet demand with App Service scale up and scale out](https://docs.microsoft.com/en-us/learn/modules/app-service-scale-up-scale-out/)
 
-[Scale up vs Scale out](https://www.stevemar.net/scale-up-scale-out/)
+##### [Scale up vs Scale out](https://www.stevemar.net/scale-up-scale-out/)
